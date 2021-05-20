@@ -1,0 +1,26 @@
+{
+    "name": "valon",
+    "version": "1.1.6",
+    "description": "YFRobot Valon MakeCode Extensions For Micro:bit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.1"
+    },
+    "files": [
+        "valon.ts",
+        "_locales/zh-cn/valon-strings.json",
+        "_locales/zh-cn/valon-jsdoc-strings.json",
+        "_locales/zh-tw/valon-strings.json",
+        "_locales/zh-tw/valon-jsdoc-strings.json",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}
