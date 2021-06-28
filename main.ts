@@ -415,7 +415,7 @@ namespace valon {
         /**
          * Send all the changes to the eyes.
          */
-        //% blockId="valon_eyes_show" block="%eyes|show" 
+        //% blockId="eyes_show" block="%eyes|show" 
         //% eyes.defl=eyes
         //% weight=35
         //% advanced=true
@@ -429,7 +429,7 @@ namespace valon {
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
          * @param rgb RGB color of the LED. 
          */
-        //% blockId="valon_eyes_set_color" block="%eyes|show color %rgb=neopixel_colors"
+        //% blockId="eyes_set_color" block="%eyes|show color %rgb=neopixel_colors"
         //% eyes.defl=eyes
         //% weight=40
         //% advanced=true
@@ -445,7 +445,7 @@ namespace valon {
          * @param pixeloffset position of the NeoPixel in the eyes. eg: 1
          * @param rgb RGB color of the LED. 
          */
-        //% blockId="valon_eyes_set_pixel_color" block="%eyes|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+        //% blockId="eyes_set_pixel_color" block="%eyes|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
         //% eyes.defl=eyes
         //% weight=38
         //% advanced=true
@@ -537,7 +537,7 @@ namespace valon {
     * Gets the RGB value of a known color
     */
     //% weight=30  
-    //% blockId="valon_neopixel_colors" block="%color"
+    //% blockId="neopixel_colors" block="%color"
     //% advanced=true
     export function colors(color: EyesColors): number {
         return color;
@@ -550,7 +550,7 @@ namespace valon {
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
     //% weight=26
-    //% blockId="valon_neopixel_rgb" block="red %red|green %green|blue %blue"
+    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
     //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
@@ -578,7 +578,7 @@ namespace valon {
      * @param s saturation from 0 to 99. eg: 50
      * @param l luminosity from 0 to 99. eg: 50
      */
-    //% blockId=valon_neopixelHSL block="hue %h|saturation %s|luminosity %l"
+    //% blockId=neopixelHSL block="hue %h|saturation %s|luminosity %l"
     //% advanced=true
     //% weight=20
     export function hsl(h: number, s: number, l: number): number {
