@@ -87,6 +87,6 @@
   "valon.wasAnyIrButtonPressed|block": "any IR button was pressed",
   "valon.writeLED|block": "LEDlight |%ledn turn |%ledswitch",
   "valon|block": "Valon",
-  "{id:category}Valon": "Valon",
-  "{id:subcategory}IR Receiver": "IR Receiver"
+  "{id:category}valon": "Valon",
+  "{id:subcategory}IR_Receiver": "IR Receiver"
 }
