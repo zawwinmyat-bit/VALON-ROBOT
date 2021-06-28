@@ -231,7 +231,7 @@ namespace valon {
      * Turn on/off the LEDs.
      */
     //% weight=120
-    //% blockId=writeLED block="LEDlight |%ledn turn |%ledswitch"
+    //% blockId=valon_writeLED block="LEDlight |%ledn turn |%ledswitch"
     //% ledn.fieldEditor="gridpicker" ledn.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
     export function writeLED(ledn: LED, ledswitch: LEDswitch): void {
@@ -259,7 +259,7 @@ namespace valon {
      * @param speed speed of motors (0 to 255). eg: 120
      */
     //% weight=90
-    //% blockId=motor_MotorRun block="motor|%index|move|%direction|at speed|%speed"
+    //% blockId=valon_motor_MotorRun block="motor|%index|move|%direction|at speed|%speed"
     //% speed.min=0 speed.max=255
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
@@ -287,7 +287,7 @@ namespace valon {
      * Stop the valon motor.
      */
     //% weight=89
-    //% blockId=motor_motorStop block="motor |%motor stop"
+    //% blockId=valon_motor_motorStop block="motor |%motor stop"
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2 
     export function motorStop(motor: Motors): void {
         motorRun(motor, 0, 0);
@@ -296,7 +296,7 @@ namespace valon {
     /**
      * Read ultrasonic sensor.
      */
-    //% blockId=ultrasonic_sensor block="read ultrasonic sensor |%unit "
+    //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
     //% weight=80
     export function Ultrasonic(unit: PingUnit, maxCmDistance = 500): number {
         let d
@@ -330,7 +330,7 @@ namespace valon {
       * @param enable line tracking sensor enable signal(0 or 1), eg: valon.PatrolEnable.PatrolOn
       */
     //% weight=71
-    //% blockId=Patrol_enable block="%enable line tracking sensor"
+    //% blockId=valon_Patrol_enable block="%enable line tracking sensor"
     //% patrol.fieldEditor="gridpicker" patrol.fieldOptions.columns=2 
     export function enablePatrol(enable: PatrolEnable): void {
         pins.digitalWritePin(DigitalPin.P12, enable);
@@ -344,7 +344,7 @@ namespace valon {
       * @param patrol patrol sensor number.
       */
     //% weight=70
-    //% blockId=read_Patrol block="read %patrol line tracking sensor"
+    //% blockId=valon_read_Patrol block="read %patrol line tracking sensor"
     //% patrol.fieldEditor="gridpicker" patrol.fieldOptions.columns=2 
     export function readPatrol(patrol: Patrol): number {
         if (patrol == Patrol.PatrolLeft) {
@@ -376,7 +376,7 @@ namespace valon {
          * @param eyes_n position of the NeoPixel in the strip
          * @param rgb RGB color of the LED. 
          */
-        //% blockId="set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
+        //% blockId="valon_set_eyes_color" block="%eyes|show color at %eyes_n|to %rgb=neopixel_colors"
         //% eyes.defl=eyes
         //% weight=60
         setEyesColor(eyes_n: RGBEYES, rgb: EyesColors): void {
@@ -393,7 +393,7 @@ namespace valon {
          * Set the brightness of the strip. This flag only applies to future operation.
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
-        //% blockId="eyes_set_brightness" block="%eyes|set brightness %brightness" 
+        //% blockId="valon_eyes_set_brightness" block="%eyes|set brightness %brightness" 
         //% eyes.defl=eyes
         //% weight=58
         setBrightness(brightness: number): void {
@@ -404,7 +404,7 @@ namespace valon {
          * Turn off all LEDs.
          * You need to call ``show`` to make the changes visible.
          */
-        //% blockId="eyes_clear" block="%eyes|clear"
+        //% blockId="valon_eyes_clear" block="%eyes|clear"
         //% eyes.defl=eyes
         //% weight=55
         clear(): void {
@@ -415,7 +415,7 @@ namespace valon {
         /**
          * Send all the changes to the eyes.
          */
-        //% blockId="eyes_show" block="%eyes|show" 
+        //% blockId="valon_eyes_show" block="%eyes|show" 
         //% eyes.defl=eyes
         //% weight=35
         //% advanced=true
@@ -429,7 +429,7 @@ namespace valon {
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
          * @param rgb RGB color of the LED. 
          */
-        //% blockId="eyes_set_color" block="%eyes|show color %rgb=neopixel_colors"
+        //% blockId="valon_eyes_set_color" block="%eyes|show color %rgb=neopixel_colors"
         //% eyes.defl=eyes
         //% weight=40
         //% advanced=true
@@ -445,7 +445,7 @@ namespace valon {
          * @param pixeloffset position of the NeoPixel in the eyes. eg: 1
          * @param rgb RGB color of the LED. 
          */
-        //% blockId="eyes_set_pixel_color" block="%eyes|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+        //% blockId="valon_eyes_set_pixel_color" block="%eyes|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
         //% eyes.defl=eyes
         //% weight=38
         //% advanced=true
@@ -517,7 +517,7 @@ namespace valon {
      *  @param numleds number of leds in the eyes, eg: 2
      *  @param mode rgb mode, eg: valon.EyesMode.RGB
      */
-    //% blockId="eyes_create" block="RGBEyes init %numleds|leds as %mode"
+    //% blockId="valon_eyes_create" block="RGBEyes init %numleds|leds as %mode"
     //% weight=62  
     //% blockSetVariable=eyes
     export function create(numleds: number, mode: EyesMode): Strip {
@@ -537,7 +537,7 @@ namespace valon {
     * Gets the RGB value of a known color
     */
     //% weight=30  
-    //% blockId="neopixel_colors" block="%color"
+    //% blockId="valon_neopixel_colors" block="%color"
     //% advanced=true
     export function colors(color: EyesColors): number {
         return color;
@@ -550,7 +550,7 @@ namespace valon {
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
     //% weight=26
-    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
+    //% blockId="valon_neopixel_rgb" block="red %red|green %green|blue %blue"
     //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
@@ -578,7 +578,7 @@ namespace valon {
      * @param s saturation from 0 to 99. eg: 50
      * @param l luminosity from 0 to 99. eg: 50
      */
-    //% blockId=neopixelHSL block="hue %h|saturation %s|luminosity %l"
+    //% blockId=valon_neopixelHSL block="hue %h|saturation %s|luminosity %l"
     //% advanced=true
     //% weight=20
     export function hsl(h: number, s: number, l: number): number {
@@ -700,7 +700,7 @@ namespace valon {
      * @param pin IR receiver pin. eg: DigitalPin.P3
      * @param protocol IR protocol. eg: valon.IrProtocol.NEC
      */
-    //% subcategory="IR Receiver"
+    //% subcategory="IR_Receiver"
     //% blockId="makerbit_infrared_connect_receiver"
     //% block="connect IR receiver at pin %pin and decode %protocol"
     //% pin.fieldEditor="gridpicker"
@@ -782,8 +782,8 @@ namespace valon {
      * @param action the trigger action
      * @param handler body code to run when event is raised
      */
-    //% subcategory="IR Receiver"
-    //% blockId=makerbit_infrared_on_ir_button
+    //% subcategory="IR_Receiver"
+    //% blockId=valon_infrared_on_ir_button
     //% block="on IR button | %button | %action"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
@@ -805,8 +805,8 @@ namespace valon {
     /**
      * Returns the code of the IR button that was pressed last. Returns -1 (IrButton.Any) if no button has been pressed yet.
      */
-    //% subcategory="IR Receiver"
-    //% blockId=makerbit_infrared_ir_button_pressed
+    //% subcategory="IR_Receiver"
+    //% blockId=valon_infrared_ir_button_pressed
     //% block="IR button"
     //% weight=10
     export function irButton(): number {
@@ -819,8 +819,8 @@ namespace valon {
     /**
      * Returns true if any button was pressed since the last call of this function. False otherwise.
      */
-    //% subcategory="IR Receiver"
-    //% blockId=makerbit_infrared_was_any_button_pressed
+    //% subcategory="IR_Receiver"
+    //% blockId=valon_infrared_was_any_button_pressed
     //% block="any IR button was pressed"
     //% weight=7
     export function wasAnyIrButtonPressed(): boolean {
@@ -839,8 +839,8 @@ namespace valon {
      * Returns the command code of a specific IR button.
      * @param button the button
      */
-    //% subcategory="IR Receiver"
-    //% blockId=makerbit_infrared_button_code
+    //% subcategory="IR_Receiver"
+    //% blockId=valon_infrared_button_code
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
