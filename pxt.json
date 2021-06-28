@@ -8,7 +8,7 @@
         "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.1"
     },
     "files": [
-        "valon.ts",
+        "main.ts",
         "_locales/zh-cn/valon-strings.json",
         "_locales/zh-cn/valon-jsdoc-strings.json",
         "_locales/zh-tw/valon-strings.json",
