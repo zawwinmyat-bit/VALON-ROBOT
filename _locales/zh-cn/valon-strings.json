@@ -87,6 +87,6 @@
     "valon.wasAnyIrButtonPressed|block": "任意按键被按下",
     "valon.writeLED|block": "LED灯|%ledn|%ledswitch",
     "valon|block": "Valon",
-    "{id:category}Valon": "Valon",
-    "{id:subcategory}IR Receiver": "IR Receiver"
+    "{id:category}valon": "Valon",
+    "{id:subcategory}IR_Receiver": "红外遥控"
 }
