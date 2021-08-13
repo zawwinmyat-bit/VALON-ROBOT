@@ -285,6 +285,7 @@ namespace valon {
 
     /**
      * Stop the valon motor.
+     * @param motor motor ML/MR/MAll. eg: valon.Motors.MAll
      */
     //% weight=89
     //% blockId=valon_motor_motorStop block="motor |%motor stop"
@@ -299,7 +300,6 @@ namespace valon {
     //% blockId=valon_ultrasonic_sensor block="read ultrasonic sensor |%unit "
     //% weight=80
     export function Ultrasonic(unit: PingUnit, maxCmDistance = 500): number {
-        let d
         // send pulse
         pins.setPull(valonUltrasonicTrig, PinPullMode.PullNone);
         pins.digitalWritePin(valonUltrasonicTrig, 0);
@@ -310,7 +310,7 @@ namespace valon {
 
         // read pulse
         // d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, maxCmDistance * 58);  // 8 / 340 = 
-        d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, 25000);
+        let d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, 25000);
         let ret = d;
         // filter timeout spikes
         if (ret == 0 && distanceBuf != 0) {
