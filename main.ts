@@ -13,7 +13,7 @@
 // ultrasonic pin
 let valonUltrasonicTrig = DigitalPin.P5
 let valonUltrasonicEcho = DigitalPin.P11
-let distanceBuf = 0
+let valon_distanceBuf = 0
 // motor pin 
 let valonMotorLD = DigitalPin.P13
 let valonMotorLA = AnalogPin.P14
@@ -313,12 +313,13 @@ namespace valon {
         let d = pins.pulseIn(valonUltrasonicEcho, PulseValue.High, 25000);
         let ret = d;
         // filter timeout spikes
-        if (ret == 0 && distanceBuf != 0) {
-            ret = distanceBuf;
+        if (ret == 0 && valon_distanceBuf != 0) {
+            ret = valon_distanceBuf;
         }
-        distanceBuf = d;
+        valon_distanceBuf = d;
 
-        return Math.floor(ret * 9 / 6 / 58);
+        // return Math.floor(ret * 9 / 6 / 58);
+        return Math.floor(ret / 58);
         // switch (unit) {
         //     case ValonPingUnit.Centimeters: return Math.idiv(d, 58);
         //     default: return d;
