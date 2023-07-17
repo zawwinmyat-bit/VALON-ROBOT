@@ -702,7 +702,7 @@ namespace valon {
      * @param protocol IR protocol. eg: valon.IrProtocol.NEC
      */
     //% subcategory="IR_Receiver"
-    //% blockId="makerbit_infrared_connect_receiver"
+    //% blockId="valon_infrared_connect_receiver"
     //% block="connect IR receiver at pin %pin and decode %protocol"
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=4
