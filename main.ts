@@ -35,9 +35,9 @@ enum PingUnit {
 namespace valon {
 
     // IR
-    const MICROBIT_MAKERBIT_IR_NEC = 777
-    const MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID = 789
-    const MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID = 790
+    const MICROBIT_IR_NEC = 777
+    const MICROBIT_IR_BUTTON_PRESSED_ID = 789
+    const MICROBIT_IR_BUTTON_RELEASED_ID = 790
     const IR_REPEAT = 256
     const IR_INCOMPLETE = 257
 
@@ -691,7 +691,7 @@ namespace valon {
             space = pins.pulseDuration();
             const command = detectCommand(mark + space);
             if (command !== IR_INCOMPLETE) {
-                control.raiseEvent(MICROBIT_MAKERBIT_IR_NEC, command);
+                control.raiseEvent(MICROBIT_IR_NEC, command);
             }
         });
     }
@@ -728,7 +728,7 @@ namespace valon {
         const REPEAT_TIMEOUT_MS = 120;
 
         control.onEvent(
-            MICROBIT_MAKERBIT_IR_NEC,
+            MICROBIT_IR_NEC,
             EventBusValue.MICROBIT_EVT_ANY,
             () => {
                 const necValue = control.eventValue();
@@ -742,7 +742,7 @@ namespace valon {
                 if (necValue <= 255 && necValue !== activeCommand) {
                     if (activeCommand >= 0) {
                         control.raiseEvent(
-                            MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
+                            MICROBIT_IR_BUTTON_RELEASED_ID,
                             activeCommand
                         );
                     }
@@ -750,7 +750,7 @@ namespace valon {
                     irState.hasNewCommand = true;
                     irState.command = necValue;
                     activeCommand = necValue;
-                    control.raiseEvent(MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID, necValue);
+                    control.raiseEvent(MICROBIT_IR_BUTTON_PRESSED_ID, necValue);
                 }
             }
         );
@@ -765,7 +765,7 @@ namespace valon {
                     if (now > repeatTimeout) {
                         // repeat timed out
                         control.raiseEvent(
-                            MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
+                            MICROBIT_IR_BUTTON_RELEASED_ID,
                             activeCommand
                         );
                         activeCommand = IR_INCOMPLETE;
@@ -793,8 +793,8 @@ namespace valon {
     export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
         control.onEvent(
             action === IrButtonAction.Pressed
-                ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID
-                : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
+                ? MICROBIT_IR_BUTTON_PRESSED_ID
+                : MICROBIT_IR_BUTTON_RELEASED_ID,
             button === IrButton.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
             () => {
                 irState.command = control.eventValue();
